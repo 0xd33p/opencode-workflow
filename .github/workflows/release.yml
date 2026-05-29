@@ -57,6 +57,7 @@ jobs:
         run: |
           git fetch origin main
           git checkout main
+          git pull --rebase
           git-cliff --config cliff.toml --output CHANGELOG.md
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

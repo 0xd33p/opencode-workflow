@@ -16,6 +16,7 @@ filter_unconventional = true
 split_commits = false
 
 commit_preprocessors = [
+  { pattern = '(?s)\n.*', replace = "" },
   { pattern = '\s+', replace = " " },
 ]
 

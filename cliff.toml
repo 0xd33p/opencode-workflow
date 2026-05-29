@@ -1,0 +1,38 @@
+[changelog]
+header = "# Changelog\n\nAll notable changes to this project will be documented in this file.\n"
+body = """
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | upper_first }}
+{% for commit in commits %}
+- {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }}{% endfor %}
+{% endfor %}
+"""
+trim = true
+postprocessors = []
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+split_commits = false
+
+commit_preprocessors = [
+  { pattern = '\s+', replace = " " },
+]
+
+[git.parse]
+extra_headers = []
+
+[git.conventional]
+types = [
+  { type = "feat",           group = "Features",        description = "New features" },
+  { type = "fix",            group = "Bug Fixes",       description = "Bug fixes" },
+  { type = "refactor",       group = "Refactoring",     description = "Code refactoring" },
+  { type = "docs",           group = "Documentation",   description = "Documentation changes" },
+  { type = "style",          group = "Styling",         description = "Code style/formatting" },
+  { type = "perf",           group = "Performance",     description = "Performance improvements" },
+  { type = "test",           group = "Testing",         description = "Test changes" },
+  { type = "build",          group = "Build",           description = "Build system/dependencies" },
+  { type = "ci",             group = "CI",              description = "CI configuration" },
+  { type = "chore",          group = "Chores",          description = "Maintenance tasks" },
+  { type = "revert",         group = "Reverts",         description = "Reverted changes" },
+]

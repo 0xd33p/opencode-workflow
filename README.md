@@ -189,6 +189,8 @@ Adding your own logic is as simple as creating a Markdown file:
 - **New Command:** Add to `.opencode/command/my-cmd.md`.
 - **New Skill:** Add a folder to `.opencode/skill/my-skill/SKILL.md`.
 
+> **Agent Model:** To pin a specific model for an agent, add `model:` to its frontmatter (e.g., `model: anthropic/claude-sonnet-4-20250514`). If omitted, the agent inherits the model you are currently using.
+
 ---
 
 ## ❓ Troubleshooting

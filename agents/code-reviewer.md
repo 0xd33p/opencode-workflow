@@ -1,7 +1,6 @@
 ---
 description: Adversarial code reviewer focusing on quality, maintainability, and best practices. Use PROACTIVELY after code changes, before commits, or when "review" is mentioned.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
 permission:
   edit: deny

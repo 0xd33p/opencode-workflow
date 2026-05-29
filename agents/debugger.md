@@ -1,7 +1,6 @@
 ---
 description: Systematic bug investigator with bash access for debugging. Use PROACTIVELY when errors occur, tests fail, or crashes happen.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
 permission:
   edit: deny

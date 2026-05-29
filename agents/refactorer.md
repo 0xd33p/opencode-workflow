@@ -1,7 +1,6 @@
 ---
 description: Code refactoring specialist focusing on clean code, design patterns, and technical debt reduction. Use PROACTIVELY when cleanup is needed or code smells are detected.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.2
 permission:
   edit: allow

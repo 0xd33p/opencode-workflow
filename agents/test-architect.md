@@ -1,7 +1,6 @@
 ---
 description: Test strategy designer focusing on coverage, test design, and testing best practices. Use PROACTIVELY when adding tests, reviewing test coverage, or designing test approaches.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.2
 permission:
   edit: allow

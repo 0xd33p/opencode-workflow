@@ -1,7 +1,6 @@
 ---
 description: Technical documentation writer for README, API docs, and guides. Use PROACTIVELY when documentation is needed or outdated.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.3
 permission:
   edit: allow

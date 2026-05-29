@@ -1,7 +1,6 @@
 ---
 description: Security vulnerability auditor focusing on OWASP Top 10 and common attack vectors. Use PROACTIVELY for auth code, user input handling, or sensitive data operations.
 mode: subagent
-model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
 permission:
   edit: deny

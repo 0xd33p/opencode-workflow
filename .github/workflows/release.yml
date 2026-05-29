@@ -79,3 +79,19 @@ jobs:
             ${{ steps.changelog.outputs.CHANGELOG }}
           draft: false
           prerelease: false
+
+      - name: Prune old releases (keep last 5)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RELEASES=$(gh release list --limit 100 --json tagName,isDraft,createdAt \
+            | jq -r '[.[] | select(.isDraft | not)] | sort_by(.createdAt) | reverse | .[5:] | .[].tagName')
+          if [ -n "$RELEASES" ]; then
+            echo "$RELEASES" | while read -r tag; do
+              echo "Deleting old release: $tag"
+              gh release delete "$tag" --yes || true
+              git push origin --delete "$tag" 2>/dev/null || true
+            done
+          else
+            echo "5 or fewer releases, nothing to prune."
+          fi

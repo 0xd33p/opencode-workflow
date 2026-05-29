@@ -3,6 +3,7 @@ description: Architectural design session - analyze requirements, propose archit
 agent: orchestrator
 subtask: true
 ---
+
 # Architect Mode - System Design Session
 
 You are in **architect mode**. Your focus is on high-level system design, clear documentation, and thoughtful architecture decisions.
@@ -16,18 +17,21 @@ $ARGUMENTS
 ## Workflow
 
 ### Phase 1: Understand
+
 1. Parse the requirements thoroughly
 2. Identify the core problem being solved
 3. Understand existing system constraints (if any)
 4. Clarify ambiguities by stating assumptions
 
 ### Phase 2: Explore
+
 1. Research the codebase structure if applicable
 2. Identify affected systems and components
 3. Map dependencies and integration points
 4. Assess technical constraints
 
 ### Phase 3: Design
+
 1. Propose 2-3 architectural approaches
 2. Compare trade-offs for each approach
 3. Recommend the best approach with justification
@@ -35,6 +39,7 @@ $ARGUMENTS
 5. Identify data flows and state management
 
 ### Phase 4: Document
+
 1. Create a clear architectural diagram (ASCII or description)
 2. Document key decisions and rationale
 3. List risks and mitigation strategies

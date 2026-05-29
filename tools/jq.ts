@@ -11,7 +11,7 @@ export default tool({
     query: tool.schema
       .string()
       .describe(
-        "jq filter expression (e.g. '.key', '.[] | select(.x > 1)', 'group_by(.type)')"
+        "jq filter expression (e.g. '.key', '.[] | select(.x > 1)', 'group_by(.type)')",
       ),
     data: tool.schema
       .string()
@@ -37,13 +37,13 @@ export default tool({
       .array(tool.schema.string())
       .optional()
       .describe(
-        "Pass string variables via --arg (format: name=value, e.g. ['key=foo', 'name=bar'])"
+        "Pass string variables via --arg (format: name=value, e.g. ['key=foo', 'name=bar'])",
       ),
     argjson: tool.schema
       .array(tool.schema.string())
       .optional()
       .describe(
-        "Pass JSON variables via --argjson (format: name=value, e.g. ['items=[1,2,3]'])"
+        "Pass JSON variables via --argjson (format: name=value, e.g. ['items=[1,2,3]'])",
       ),
     nullInput: tool.schema
       .boolean()
@@ -65,7 +65,9 @@ export default tool({
 
     if (args.nullInput) {
       if (args.data || args.file) {
-        throw new Error("When nullInput is set, do not provide 'data' or 'file'.");
+        throw new Error(
+          "When nullInput is set, do not provide 'data' or 'file'.",
+        );
       }
     } else if (args.rawInput) {
       if (!args.data && !args.file) {
@@ -84,7 +86,9 @@ export default tool({
       try {
         JSON.parse(args.data);
       } catch {
-        throw new Error("The 'data' argument is not valid JSON. Check for missing quotes, trailing commas, or other syntax issues.");
+        throw new Error(
+          "The 'data' argument is not valid JSON. Check for missing quotes, trailing commas, or other syntax issues.",
+        );
       }
     }
 
@@ -100,7 +104,7 @@ export default tool({
     for (const entry of args.arg ?? []) {
       if (!ARG_RE.test(entry)) {
         throw new Error(
-          `Invalid --arg format: "${entry}". Use 'name=value' where name is a valid identifier and value is non-empty.`
+          `Invalid --arg format: "${entry}". Use 'name=value' where name is a valid identifier and value is non-empty.`,
         );
       }
       const eqIndex = entry.indexOf("=");
@@ -110,7 +114,7 @@ export default tool({
     for (const entry of args.argjson ?? []) {
       if (!ARG_RE.test(entry)) {
         throw new Error(
-          `Invalid --argjson format: "${entry}". Use 'name=value' where value is valid JSON.`
+          `Invalid --argjson format: "${entry}". Use 'name=value' where value is valid JSON.`,
         );
       }
       const eqIndex = entry.indexOf("=");
@@ -119,7 +123,7 @@ export default tool({
         JSON.parse(jsonVal);
       } catch {
         throw new Error(
-          `Invalid JSON value in argjson: "${jsonVal}". Must be valid JSON.`
+          `Invalid JSON value in argjson: "${jsonVal}". Must be valid JSON.`,
         );
       }
       jqArgs.push("--argjson", entry.slice(0, eqIndex), jsonVal);
@@ -129,7 +133,9 @@ export default tool({
 
     if (args.file) {
       if (!existsSync(args.file)) {
-        throw new Error(`File not found: "${args.file}". Verify the file path is correct and the file exists.`);
+        throw new Error(
+          `File not found: "${args.file}". Verify the file path is correct and the file exists.`,
+        );
       }
       jqArgs.push(args.file);
     }
@@ -147,28 +153,22 @@ export default tool({
       const err = error as { stderr?: Buffer | string; message?: string };
       const stderr = (err.stderr?.toString() || err.message || "").replace(
         /\x1B\[[0-9;]*[a-zA-Z]/g,
-        ""
+        "",
       );
 
       if (stderr.includes("is not defined")) {
         throw new Error(
-          `Variable not defined in query: "${args.query}". Use --arg (string) or --argjson (JSON) to define variables referenced with $.`
+          `Variable not defined in query: "${args.query}". Use --arg (string) or --argjson (JSON) to define variables referenced with $.`,
         );
       }
-      if (
-        stderr.includes("parse error") ||
-        stderr.includes("syntax error")
-      ) {
+      if (stderr.includes("parse error") || stderr.includes("syntax error")) {
         throw new Error(
-          `Query syntax error: "${args.query}". Check the query syntax — make sure parentheses, pipes, and operators are correct. Example: ".key", ".[] | select(.x > 1)", "group_by(.type)"`
+          `Query syntax error: "${args.query}". Check the query syntax — make sure parentheses, pipes, and operators are correct. Example: ".key", ".[] | select(.x > 1)", "group_by(.type)"`,
         );
       }
-      if (
-        stderr.includes("No such file") ||
-        stderr.includes("Cannot read")
-      ) {
+      if (stderr.includes("No such file") || stderr.includes("Cannot read")) {
         throw new Error(
-          `File not found: "${args.file}". Verify the file path is correct.`
+          `File not found: "${args.file}". Verify the file path is correct.`,
         );
       }
 
@@ -182,7 +182,7 @@ export default tool({
       }
 
       throw new Error(
-        `jq execution failed for query: "${args.query}". Here is the jq --help output for reference:\n\n${helpText}`
+        `jq execution failed for query: "${args.query}". Here is the jq --help output for reference:\n\n${helpText}`,
       );
     }
   },

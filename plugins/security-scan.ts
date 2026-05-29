@@ -13,10 +13,10 @@ const SENSITIVE_FILES = [
   /\.key$/,
   /id_rsa/,
   /id_ed25519/,
-]
+];
 
 function isSensitiveFile(filePath: string): boolean {
-  return SENSITIVE_FILES.some((pattern) => pattern.test(filePath))
+  return SENSITIVE_FILES.some((pattern) => pattern.test(filePath));
 }
 
 export const SecurityScanPlugin = async ({ $ }) => {
@@ -24,16 +24,17 @@ export const SecurityScanPlugin = async ({ $ }) => {
     "tool.execute.before": async (input, output) => {
       // Only check file modification tools
       if (!["write", "edit", "patch"].includes(input.tool)) {
-        return
+        return;
       }
 
-      const filePath = input.args?.file_path || input.args?.filePath || input.args?.path || ""
+      const filePath =
+        input.args?.file_path || input.args?.filePath || input.args?.path || "";
 
       if (filePath && isSensitiveFile(filePath)) {
         throw new Error(
-          `SECURITY BLOCK: Cannot edit sensitive file "${filePath}". Edit manually if needed.`
-        )
+          `SECURITY BLOCK: Cannot edit sensitive file "${filePath}". Edit manually if needed.`,
+        );
       }
     },
-  }
-}
+  };
+};

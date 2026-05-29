@@ -12,29 +12,30 @@ const FORMATTERS: Record<string, string> = {
   ".md": "npx prettier --write",
   ".py": "black",
   ".go": "gofmt -w",
-}
+};
 
 export const AutoFormatPlugin = async ({ $ }) => {
   return {
     "tool.execute.after": async (input, output) => {
       if (!["write", "edit"].includes(input.tool)) {
-        return
+        return;
       }
 
-      const filePath = input.args?.file_path || input.args?.filePath || input.args?.path || ""
-      if (!filePath) return
+      const filePath =
+        input.args?.file_path || input.args?.filePath || input.args?.path || "";
+      if (!filePath) return;
 
-      const ext = filePath.match(/\.[^.]+$/)?.[0]?.toLowerCase()
-      const formatter = ext ? FORMATTERS[ext] : null
+      const ext = filePath.match(/\.[^.]+$/)?.[0]?.toLowerCase();
+      const formatter = ext ? FORMATTERS[ext] : null;
 
       if (formatter) {
         try {
-          const [cmd, ...args] = formatter.split(" ")
-          await $`${cmd} ${args} ${filePath}`.quiet()
+          const [cmd, ...args] = formatter.split(" ");
+          await $`${cmd} ${args} ${filePath}`.quiet();
         } catch {
           // Ignore formatter errors - non-blocking
         }
       }
     },
-  }
-}
+  };
+};

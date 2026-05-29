@@ -46,13 +46,13 @@ POST   /deleteUser
 
 ### HTTP Method Semantics
 
-| Method | Purpose | Idempotent | Safe | Request Body |
-|--------|---------|------------|------|--------------|
-| GET | Retrieve resource(s) | Yes | Yes | No |
-| POST | Create resource | No | No | Yes |
-| PUT | Replace resource | Yes | No | Yes |
-| PATCH | Partial update | Yes | No | Yes |
-| DELETE | Remove resource | Yes | No | Optional |
+| Method | Purpose              | Idempotent | Safe | Request Body |
+| ------ | -------------------- | ---------- | ---- | ------------ |
+| GET    | Retrieve resource(s) | Yes        | Yes  | No           |
+| POST   | Create resource      | No         | No   | Yes          |
+| PUT    | Replace resource     | Yes        | No   | Yes          |
+| PATCH  | Partial update       | Yes        | No   | Yes          |
+| DELETE | Remove resource      | Yes        | No   | Optional     |
 
 ### URL Structure Patterns
 
@@ -72,14 +72,14 @@ Sort:           /users?sort=created_at&order=desc
 
 ### Path Parameters vs Query Parameters
 
-| Use | Path Parameters | Query Parameters |
-|-----|-----------------|------------------|
-| Resource identification | `/users/123` | - |
-| Required filters | `/orgs/456/users` | - |
-| Optional filters | - | `?status=active` |
-| Pagination | - | `?page=2&limit=20` |
-| Sorting | - | `?sort=name&order=asc` |
-| Search | - | `?q=searchterm` |
+| Use                     | Path Parameters   | Query Parameters       |
+| ----------------------- | ----------------- | ---------------------- |
+| Resource identification | `/users/123`      | -                      |
+| Required filters        | `/orgs/456/users` | -                      |
+| Optional filters        | -                 | `?status=active`       |
+| Pagination              | -                 | `?page=2&limit=20`     |
+| Sorting                 | -                 | `?sort=name&order=asc` |
+| Search                  | -                 | `?q=searchterm`        |
 
 ### Request Body Patterns
 
@@ -150,12 +150,12 @@ Sort:           /users?sort=created_at&order=desc
 
 ### HTTP Status Code Guidelines
 
-| Range | Category | Common Codes |
-|-------|----------|--------------|
-| 2xx | Success | 200 OK, 201 Created, 204 No Content |
-| 3xx | Redirect | 301 Moved, 304 Not Modified |
-| 4xx | Client Error | 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 422 Unprocessable |
-| 5xx | Server Error | 500 Internal, 502 Bad Gateway, 503 Unavailable |
+| Range | Category     | Common Codes                                                                       |
+| ----- | ------------ | ---------------------------------------------------------------------------------- |
+| 2xx   | Success      | 200 OK, 201 Created, 204 No Content                                                |
+| 3xx   | Redirect     | 301 Moved, 304 Not Modified                                                        |
+| 4xx   | Client Error | 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 422 Unprocessable |
+| 5xx   | Server Error | 500 Internal, 502 Bad Gateway, 503 Unavailable                                     |
 
 ### Status Code Decision Tree
 
@@ -301,12 +301,12 @@ type UserList {
 
 ### Authentication Patterns
 
-| Pattern | Use Case | Header |
-|---------|----------|--------|
-| Bearer Token | Standard API auth | `Authorization: Bearer <token>` |
-| API Key | Server-to-server | `X-API-Key: <key>` |
-| Basic Auth | Simple/legacy systems | `Authorization: Basic <base64>` |
-| OAuth 2.0 | Third-party integration | OAuth flow |
+| Pattern      | Use Case                | Header                          |
+| ------------ | ----------------------- | ------------------------------- |
+| Bearer Token | Standard API auth       | `Authorization: Bearer <token>` |
+| API Key      | Server-to-server        | `X-API-Key: <key>`              |
+| Basic Auth   | Simple/legacy systems   | `Authorization: Basic <base64>` |
+| OAuth 2.0    | Third-party integration | OAuth flow                      |
 
 ### Authorization Responses
 
@@ -347,15 +347,15 @@ Not authorized → 403 Forbidden
 
 ### Common Error Codes
 
-| Code | HTTP Status | When |
-|------|-------------|------|
-| `VALIDATION_ERROR` | 400/422 | Request data invalid |
-| `UNAUTHORIZED` | 401 | Auth required |
-| `FORBIDDEN` | 403 | Insufficient permissions |
-| `NOT_FOUND` | 404 | Resource doesn't exist |
-| `CONFLICT` | 409 | State conflict (duplicate) |
-| `RATE_LIMITED` | 429 | Too many requests |
-| `INTERNAL_ERROR` | 500 | Server failure |
+| Code               | HTTP Status | When                       |
+| ------------------ | ----------- | -------------------------- |
+| `VALIDATION_ERROR` | 400/422     | Request data invalid       |
+| `UNAUTHORIZED`     | 401         | Auth required              |
+| `FORBIDDEN`        | 403         | Insufficient permissions   |
+| `NOT_FOUND`        | 404         | Resource doesn't exist     |
+| `CONFLICT`         | 409         | State conflict (duplicate) |
+| `RATE_LIMITED`     | 429         | Too many requests          |
+| `INTERNAL_ERROR`   | 500         | Server failure             |
 
 ---
 
@@ -380,12 +380,12 @@ paths:
             type: string
             enum: [active, inactive]
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserList'
+                $ref: "#/components/schemas/UserList"
 
 components:
   schemas:

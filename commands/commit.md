@@ -2,6 +2,7 @@
 description: Create git commit with auto-generated conventional commit message
 agent: build
 ---
+
 # Git Commit Command
 
 Create a well-structured git commit by analyzing staged changes and generating a conventional commit message.
@@ -38,6 +39,7 @@ Based on the staged diff, determine:
 Format: `type(scope): description`
 
 Rules:
+
 - Use imperative mood ("Add feature" not "Added feature")
 - Keep first line under 72 characters
 - Focus on the purpose and impact

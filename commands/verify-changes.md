@@ -2,6 +2,7 @@
 description: Multi-phase verification of implementation with adversarial review
 agent: build
 ---
+
 # Verify Changes Command
 
 Comprehensive verification of recent changes using the adversarial verification approach from claude-workflow-v2.
@@ -13,6 +14,7 @@ Use progressive quality gates - run cheap checks first, expensive checks later. 
 ## Phase 1: Gather Context
 
 Run in parallel:
+
 1. `git diff HEAD~1` or `git diff` - Understand what changed
 2. `git status` - See current state
 3. Identify affected files and their types (source, test, config)
@@ -22,16 +24,19 @@ Run in parallel:
 Run these quick checks first (~5-30 seconds each). Stop on first failure:
 
 ### Lint Check
+
 - Detect project linter (eslint, prettier, ruff, golint, etc.)
 - Run: `npm run lint` or equivalent
 - Exit immediately if lint fails
 
 ### Type Check
+
 - Detect type system (TypeScript, mypy, etc.)
 - Run: `npx tsc --noEmit` or equivalent
 - Exit immediately if type errors exist
 
 ### Build Check
+
 - Run: `npm run build` or equivalent
 - Verify compilation succeeds
 
@@ -40,11 +45,13 @@ Run these quick checks first (~5-30 seconds each). Stop on first failure:
 Only proceed if Phase 2 passes:
 
 ### Test Execution
+
 - Run: `npm test` or equivalent
 - Capture test results and coverage if available
 - Report any failing tests with details
 
 ### Security Scan (if security-auditor agent available)
+
 - Invoke @security-auditor for OWASP top 10 review
 - Check for obvious vulnerabilities in changed code
 
@@ -93,6 +100,7 @@ Recommended Actions:
 ## Configuration Detection
 
 Automatically detect project configuration:
+
 - package.json -> npm/yarn commands
 - pyproject.toml / setup.py -> Python commands
 - Cargo.toml -> Rust commands
@@ -102,6 +110,7 @@ Automatically detect project configuration:
 ## Error Handling
 
 If a check fails:
+
 1. Report the specific error with context
 2. Suggest a fix if possible
 3. Ask user if they want to continue with remaining checks or stop

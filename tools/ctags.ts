@@ -8,10 +8,20 @@ import { join } from "path";
  * Filters out common noise (node_modules, .venv) and focuses on structural elements.
  */
 export default tool({
-  description: "Scan a file or directory for symbols (functions, classes, methods) using ctags. Use this BEFORE read() to locate symbols and know which line range to read — saves tokens.",
+  description:
+    "Scan a file or directory for symbols (functions, classes, methods) using ctags. Use this BEFORE read() to locate symbols and know which line range to read — saves tokens.",
   args: {
-    path: tool.schema.string().describe("File or directory path. Accepts both absolute (/home/...) and relative (backend/app) paths."),
-    lang: tool.schema.enum(["python", "typescript", "rust", "go", "cpp", "java", "javascript"]).optional().describe("Language filter. REQUIRED when path is a directory; optional for single files."),
+    path: tool.schema
+      .string()
+      .describe(
+        "File or directory path. Accepts both absolute (/home/...) and relative (backend/app) paths.",
+      ),
+    lang: tool.schema
+      .enum(["python", "typescript", "rust", "go", "cpp", "java", "javascript"])
+      .optional()
+      .describe(
+        "Language filter. REQUIRED when path is a directory; optional for single files.",
+      ),
   },
   async execute(args, context) {
     const rawPath = args.path || ".";
@@ -29,7 +39,7 @@ export default tool({
     if (isDirectory && !args.lang) {
       return `[ctags] lang is required for directories. Example: ctags({ path: "${targetPath}", lang: "python" }). Supported: python, typescript, rust, go, cpp, java, javascript.`;
     }
-    
+
     // Define safe exclusion patterns
     const excludes = [
       "node_modules",
@@ -42,8 +52,10 @@ export default tool({
       ".git",
       ".ruff_cache",
       ".pytest_cache",
-      "htmlcov"
-    ].map(e => `--exclude=${e}`).join(" ");
+      "htmlcov",
+    ]
+      .map((e) => `--exclude=${e}`)
+      .join(" ");
 
     // Define language-specific kind filters
     const kindFilters: Record<string, string> = {
@@ -70,28 +82,33 @@ export default tool({
     command += ` ${targetPath}`;
 
     try {
-      const output = execSync(command, { encoding: "utf-8", cwd: context.directory });
-      
+      const output = execSync(command, {
+        encoding: "utf-8",
+        cwd: context.directory,
+      });
+
       if (!output.trim()) {
         return `[ctags] No symbols found in "${targetPath}". The file may be empty or contain only unsupported constructs. Use ctags on a directory with lang to list available symbols.`;
       }
 
       const lines = output.trim().split("\n");
-      const results = lines.map(line => {
-        try {
-          const tag = JSON.parse(line);
-          return {
-            name: tag.name,
-            kind: tag.kind,
-            path: tag.path,
-            line: tag.line,
-            end: tag.end,
-            scope: tag.scope || undefined
-          };
-        } catch (e) {
-          return null;
-        }
-      }).filter(Boolean);
+      const results = lines
+        .map((line) => {
+          try {
+            const tag = JSON.parse(line);
+            return {
+              name: tag.name,
+              kind: tag.kind,
+              path: tag.path,
+              line: tag.line,
+              end: tag.end,
+              scope: tag.scope || undefined,
+            };
+          } catch (e) {
+            return null;
+          }
+        })
+        .filter(Boolean);
 
       return JSON.stringify(results, null, 2);
     } catch (error: any) {

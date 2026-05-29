@@ -2,6 +2,7 @@
 description: Demonstrate parallel execution by launching multiple agents simultaneously
 agent: build
 ---
+
 # Parallel Execution Command
 
 Demonstrates the parallel execution pattern from claude-workflow-v2 by launching multiple independent subagents in a single message.
@@ -25,11 +26,13 @@ If no arguments, demonstrate with a default parallel analysis of the project.
 ## Phase 2: Identify Independent Tasks
 
 For parallelization, tasks must be:
+
 - **Independent**: No dependencies between them
 - **Non-conflicting**: Don't modify the same files
 - **Self-contained**: Each can complete without the other
 
 Examples of good parallel candidates:
+
 - Code review + Security audit + Test analysis
 - Analyze src/ + Analyze lib/ + Analyze tests/
 - Check TypeScript + Check ESLint + Check tests
@@ -49,6 +52,7 @@ Task 3: "@test-architect Analyze test coverage for authentication"
 ### Parallelization Patterns
 
 #### Pattern A: Multi-Perspective Review
+
 ```
 Spawn in parallel:
 - Logic Reviewer: Focus on correctness and edge cases
@@ -58,6 +62,7 @@ Spawn in parallel:
 ```
 
 #### Pattern B: Directory Parallelization
+
 ```
 Spawn in parallel:
 - Subagent 1: Analyze src/api/
@@ -66,6 +71,7 @@ Spawn in parallel:
 ```
 
 #### Pattern C: Full Verification Suite
+
 ```
 Spawn in parallel:
 - Type Checker: Run TypeScript/mypy
@@ -77,6 +83,7 @@ Spawn in parallel:
 ## Phase 4: Collect Results
 
 As each subagent completes:
+
 1. Capture their output
 2. Track completion status
 3. Note any conflicts or overlapping findings
@@ -138,10 +145,10 @@ Prioritized Actions:
 
 ## Performance Impact
 
-| Approach | 4 Tasks @ 30s each | Total Time |
-|----------|-------------------|------------|
-| Sequential | 30s + 30s + 30s + 30s | ~120s |
-| Parallel | All 4 run simultaneously | ~30s |
+| Approach   | 4 Tasks @ 30s each       | Total Time |
+| ---------- | ------------------------ | ---------- |
+| Sequential | 30s + 30s + 30s + 30s    | ~120s      |
+| Parallel   | All 4 run simultaneously | ~30s       |
 
 **Parallel execution is approximately Nx faster** where N = number of independent tasks.
 

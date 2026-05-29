@@ -4,7 +4,16 @@ import { existsSync } from "fs";
 
 const LINE_RANGE_RE = /^(\d+)?(:(\d+)?(\+(\d+))?)?$/;
 const HIGHLIGHT_LINE_RE = /^(\d+)?(:(\d+)?(\+(\d+))?)?$/;
-const VALID_STYLES = new Set(["plain", "full", "numbers", "changes", "header", "grid", "rule", "snip"]);
+const VALID_STYLES = new Set([
+  "plain",
+  "full",
+  "numbers",
+  "changes",
+  "header",
+  "grid",
+  "rule",
+  "snip",
+]);
 const VALID_WRAP = new Set(["auto", "never", "character"]);
 
 function stripAnsi(s: string): string {
@@ -15,33 +24,37 @@ export default tool({
   description:
     "View file contents with syntax highlighting (using bat). Supports multiple programming languages, line numbers, Git diff, custom themes and styles.",
   args: {
-    path: tool.schema
-      .string()
-      .describe("Path to the file to view (required)"),
+    path: tool.schema.string().describe("Path to the file to view (required)"),
     language: tool.schema
       .string()
       .optional()
       .describe(
-        "Specify language for syntax highlighting (e.g., 'rust', 'python', 'cpp', 'json', 'markdown')"
+        "Specify language for syntax highlighting (e.g., 'rust', 'python', 'cpp', 'json', 'markdown')",
       ),
     lineRange: tool.schema
       .string()
       .optional()
-      .describe("Print only a range of lines, e.g., '30:40', ':40', '40:', '40', '30:+10'"),
+      .describe(
+        "Print only a range of lines, e.g., '30:40', ':40', '40:', '40', '30:+10'",
+      ),
     highlightLine: tool.schema
       .string()
       .optional()
-      .describe("Highlight a line, e.g., '40', '30:40', ':40', '40:', '30:+10'"),
+      .describe(
+        "Highlight a line, e.g., '40', '30:40', ':40', '40:', '30:+10'",
+      ),
     style: tool.schema
       .string()
       .optional()
       .describe(
-        "Display style: 'plain', 'full', 'numbers', 'changes', 'header', 'grid', 'rule', 'snip', or comma-separated combination"
+        "Display style: 'plain', 'full', 'numbers', 'changes', 'header', 'grid', 'rule', 'snip', or comma-separated combination",
       ),
     theme: tool.schema
       .string()
       .optional()
-      .describe("Theme for syntax highlighting, e.g., 'Dracula', 'Monokai', 'GitHub', 'OneHalfDark', 'TwoDark'"),
+      .describe(
+        "Theme for syntax highlighting, e.g., 'Dracula', 'Monokai', 'GitHub', 'OneHalfDark', 'TwoDark'",
+      ),
     number: tool.schema
       .boolean()
       .optional()
@@ -89,7 +102,9 @@ export default tool({
       if (LINE_RANGE_RE.test(args.lineRange)) {
         batArgs.push("--line-range", args.lineRange);
       } else {
-        errors.push(`WARNING: Invalid lineRange '${args.lineRange}', ignoring. Expected format: '30:40', ':40', '40:', '40', '30:+10'`);
+        errors.push(
+          `WARNING: Invalid lineRange '${args.lineRange}', ignoring. Expected format: '30:40', ':40', '40:', '40', '30:+10'`,
+        );
       }
     }
 
@@ -97,18 +112,22 @@ export default tool({
       if (HIGHLIGHT_LINE_RE.test(args.highlightLine)) {
         batArgs.push("--highlight-line", args.highlightLine);
       } else {
-        errors.push(`WARNING: Invalid highlightLine '${args.highlightLine}', ignoring. Expected format: '40', '30:40', ':40', '40:', '30:+10'`);
+        errors.push(
+          `WARNING: Invalid highlightLine '${args.highlightLine}', ignoring. Expected format: '40', '30:40', ':40', '40:', '30:+10'`,
+        );
       }
     }
 
     if (args.style) {
-      const styles = args.style.split(",").map(s => s.trim());
-      const allValid = styles.every(s => VALID_STYLES.has(s));
+      const styles = args.style.split(",").map((s) => s.trim());
+      const allValid = styles.every((s) => VALID_STYLES.has(s));
       if (allValid) {
         batArgs.push("--style", args.style);
       } else {
-        const invalid = styles.filter(s => !VALID_STYLES.has(s));
-        errors.push(`WARNING: Invalid style(s) '${invalid.join(",")}', ignoring --style. Valid: ${[...VALID_STYLES].join(", ")}`);
+        const invalid = styles.filter((s) => !VALID_STYLES.has(s));
+        errors.push(
+          `WARNING: Invalid style(s) '${invalid.join(",")}', ignoring --style. Valid: ${[...VALID_STYLES].join(", ")}`,
+        );
       }
     }
 
@@ -140,7 +159,9 @@ export default tool({
       if (VALID_WRAP.has(args.wrap)) {
         batArgs.push("--wrap", args.wrap);
       } else {
-        errors.push(`WARNING: Invalid wrap '${args.wrap}', ignoring. Valid: ${[...VALID_WRAP].join(", ")}`);
+        errors.push(
+          `WARNING: Invalid wrap '${args.wrap}', ignoring. Valid: ${[...VALID_WRAP].join(", ")}`,
+        );
       }
     }
 
@@ -161,16 +182,26 @@ export default tool({
       return header + output;
     } catch (error: any) {
       const stderr = stripAnsi(error.stderr || error.message || "");
-      const stderrLines = stderr.split("\n").map(l => l.trim()).filter(Boolean);
-      const batError = stderrLines.length > 0 ? stderrLines[stderrLines.length - 1] : "";
+      const stderrLines = stderr
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean);
+      const batError =
+        stderrLines.length > 0 ? stderrLines[stderrLines.length - 1] : "";
 
-      if (batError.includes("No such file") || batError.includes("os error 2")) {
+      if (
+        batError.includes("No such file") ||
+        batError.includes("os error 2")
+      ) {
         return `ERROR: File not found: '${args.path}'. Verify the file exists before calling bat.`;
       }
       if (batError.includes("is a directory")) {
         return `ERROR: '${args.path}' is a directory, not a file. Provide a file path.`;
       }
-      if (batError.includes("Permission denied") || batError.includes("os error 13")) {
+      if (
+        batError.includes("Permission denied") ||
+        batError.includes("os error 13")
+      ) {
         return `ERROR: Permission denied reading '${args.path}'. Check file permissions.`;
       }
       if (batError.includes("Grid:") || batError.includes("Unknown")) {

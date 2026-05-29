@@ -41,11 +41,11 @@ Strategies and patterns for designing effective, maintainable test suites.
               └──┴─────────┘
 ```
 
-| Level | Speed | Scope | Quantity | Purpose |
-|-------|-------|-------|----------|---------|
-| Unit | ~ms | Single function/class | Many (70-80%) | Logic correctness |
-| Integration | ~s | Multiple components | Some (15-20%) | Component interaction |
-| E2E | ~10s+ | Full system | Few (5-10%) | User flows work |
+| Level       | Speed | Scope                 | Quantity      | Purpose               |
+| ----------- | ----- | --------------------- | ------------- | --------------------- |
+| Unit        | ~ms   | Single function/class | Many (70-80%) | Logic correctness     |
+| Integration | ~s    | Multiple components   | Some (15-20%) | Component interaction |
+| E2E         | ~10s+ | Full system           | Few (5-10%)   | User flows work       |
 
 ---
 
@@ -211,22 +211,22 @@ class TestUsers:
 
 ### When to Mock
 
-| Mock | Don't Mock |
-|------|------------|
-| External APIs | Pure business logic |
-| Database (for unit tests) | Simple value objects |
-| File system | Deterministic functions |
-| Time/random | Core domain entities |
-| Third-party services | Internal collaborators (usually) |
+| Mock                      | Don't Mock                       |
+| ------------------------- | -------------------------------- |
+| External APIs             | Pure business logic              |
+| Database (for unit tests) | Simple value objects             |
+| File system               | Deterministic functions          |
+| Time/random               | Core domain entities             |
+| Third-party services      | Internal collaborators (usually) |
 
 ### Mock Types
 
-| Type | Purpose | Example |
-|------|---------|---------|
-| **Stub** | Return canned responses | `mock.return_value = 42` |
-| **Mock** | Verify interactions | `mock.assert_called_with(...)` |
-| **Spy** | Track real calls | Wraps real object, records calls |
-| **Fake** | Simplified implementation | In-memory database |
+| Type     | Purpose                   | Example                          |
+| -------- | ------------------------- | -------------------------------- |
+| **Stub** | Return canned responses   | `mock.return_value = 42`         |
+| **Mock** | Verify interactions       | `mock.assert_called_with(...)`   |
+| **Spy**  | Track real calls          | Wraps real object, records calls |
+| **Fake** | Simplified implementation | In-memory database               |
 
 ### Mocking Example
 
@@ -332,22 +332,22 @@ def test_successful_login(page):
 
 ### What to Cover
 
-| Priority | What | Why |
-|----------|------|-----|
-| High | Business logic | Core value |
-| High | Edge cases | Where bugs hide |
-| High | Error paths | Graceful failures |
-| Medium | Integration points | Contract validation |
-| Low | UI layout | Brittle, low value |
-| Low | Third-party code | Not your responsibility |
+| Priority | What               | Why                     |
+| -------- | ------------------ | ----------------------- |
+| High     | Business logic     | Core value              |
+| High     | Edge cases         | Where bugs hide         |
+| High     | Error paths        | Graceful failures       |
+| Medium   | Integration points | Contract validation     |
+| Low      | UI layout          | Brittle, low value      |
+| Low      | Third-party code   | Not your responsibility |
 
 ### Coverage Metrics
 
-| Metric | Target | Notes |
-|--------|--------|-------|
-| Line coverage | 70-80% | Basic minimum |
-| Branch coverage | 60-70% | Catches conditionals |
-| Mutation score | 50-70% | Measures test quality |
+| Metric          | Target | Notes                 |
+| --------------- | ------ | --------------------- |
+| Line coverage   | 70-80% | Basic minimum         |
+| Branch coverage | 60-70% | Catches conditionals  |
+| Mutation score  | 50-70% | Measures test quality |
 
 ### Meaningful Coverage
 
@@ -371,14 +371,14 @@ LOW VALUE:
 
 ### Common Causes
 
-| Cause | Solution |
-|-------|----------|
-| Timing issues | Use explicit waits, not sleep |
-| Shared state | Isolate test data |
-| External dependencies | Mock or use containers |
-| Race conditions | Add synchronization |
-| Date/time | Mock time providers |
-| Random data | Seed random generators |
+| Cause                 | Solution                      |
+| --------------------- | ----------------------------- |
+| Timing issues         | Use explicit waits, not sleep |
+| Shared state          | Isolate test data             |
+| External dependencies | Mock or use containers        |
+| Race conditions       | Add synchronization           |
+| Date/time             | Mock time providers           |
+| Random data           | Seed random generators        |
 
 ### Flaky Test Checklist
 

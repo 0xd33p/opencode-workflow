@@ -27,13 +27,13 @@ Principles and patterns for designing maintainable, scalable, and robust softwar
 
 ### SOLID Principles
 
-| Principle | Summary | Violation Sign |
-|-----------|---------|----------------|
-| **S**ingle Responsibility | One reason to change | Class does too many things |
-| **O**pen/Closed | Open for extension, closed for modification | Modifying existing code for new features |
-| **L**iskov Substitution | Subtypes replaceable for base types | Overrides break parent behavior |
-| **I**nterface Segregation | Small, focused interfaces | Classes implement unused methods |
-| **D**ependency Inversion | Depend on abstractions | High-level modules depend on low-level |
+| Principle                 | Summary                                     | Violation Sign                           |
+| ------------------------- | ------------------------------------------- | ---------------------------------------- |
+| **S**ingle Responsibility | One reason to change                        | Class does too many things               |
+| **O**pen/Closed           | Open for extension, closed for modification | Modifying existing code for new features |
+| **L**iskov Substitution   | Subtypes replaceable for base types         | Overrides break parent behavior          |
+| **I**nterface Segregation | Small, focused interfaces                   | Classes implement unused methods         |
+| **D**ependency Inversion  | Depend on abstractions                      | High-level modules depend on low-level   |
 
 ### The Dependency Rule
 
@@ -139,30 +139,30 @@ Event Source → Event Bus → Event Handlers
 
 ### Creational Patterns
 
-| Pattern | Purpose | When to Use |
-|---------|---------|-------------|
-| **Factory** | Create objects without specifying class | Object creation logic is complex |
-| **Builder** | Construct complex objects step-by-step | Many optional parameters |
-| **Singleton** | Single instance globally | Shared resource (use sparingly) |
-| **Dependency Injection** | Inject dependencies externally | Testability, loose coupling |
+| Pattern                  | Purpose                                 | When to Use                      |
+| ------------------------ | --------------------------------------- | -------------------------------- |
+| **Factory**              | Create objects without specifying class | Object creation logic is complex |
+| **Builder**              | Construct complex objects step-by-step  | Many optional parameters         |
+| **Singleton**            | Single instance globally                | Shared resource (use sparingly)  |
+| **Dependency Injection** | Inject dependencies externally          | Testability, loose coupling      |
 
 ### Structural Patterns
 
-| Pattern | Purpose | When to Use |
-|---------|---------|-------------|
-| **Adapter** | Convert interface to another | Integrating incompatible systems |
-| **Decorator** | Add behavior dynamically | Extending functionality without inheritance |
-| **Facade** | Simplified interface to complex system | Hiding complexity |
-| **Repository** | Abstract data access | Separating domain from persistence |
+| Pattern        | Purpose                                | When to Use                                 |
+| -------------- | -------------------------------------- | ------------------------------------------- |
+| **Adapter**    | Convert interface to another           | Integrating incompatible systems            |
+| **Decorator**  | Add behavior dynamically               | Extending functionality without inheritance |
+| **Facade**     | Simplified interface to complex system | Hiding complexity                           |
+| **Repository** | Abstract data access                   | Separating domain from persistence          |
 
 ### Behavioral Patterns
 
-| Pattern | Purpose | When to Use |
-|---------|---------|-------------|
-| **Strategy** | Interchangeable algorithms | Multiple ways to do something |
-| **Observer** | Notify dependents of changes | Event systems, reactive updates |
-| **Command** | Encapsulate actions as objects | Undo/redo, queuing, logging |
-| **Chain of Responsibility** | Pass request along handlers | Middleware, validation chains |
+| Pattern                     | Purpose                        | When to Use                     |
+| --------------------------- | ------------------------------ | ------------------------------- |
+| **Strategy**                | Interchangeable algorithms     | Multiple ways to do something   |
+| **Observer**                | Notify dependents of changes   | Event systems, reactive updates |
+| **Command**                 | Encapsulate actions as objects | Undo/redo, queuing, logging     |
+| **Chain of Responsibility** | Pass request along handlers    | Middleware, validation chains   |
 
 ---
 
@@ -170,22 +170,22 @@ Event Source → Event Bus → Event Handlers
 
 ### Strategic Design
 
-| Concept | Definition | Example |
-|---------|------------|---------|
-| **Bounded Context** | Explicit boundary for a domain model | Order context, Shipping context |
-| **Ubiquitous Language** | Shared vocabulary between devs and domain experts | "Order", "Line Item", "Fulfillment" |
-| **Context Map** | How bounded contexts relate | Customer shared between Sales and Support |
+| Concept                 | Definition                                        | Example                                   |
+| ----------------------- | ------------------------------------------------- | ----------------------------------------- |
+| **Bounded Context**     | Explicit boundary for a domain model              | Order context, Shipping context           |
+| **Ubiquitous Language** | Shared vocabulary between devs and domain experts | "Order", "Line Item", "Fulfillment"       |
+| **Context Map**         | How bounded contexts relate                       | Customer shared between Sales and Support |
 
 ### Tactical Patterns
 
-| Pattern | Purpose | Example |
-|---------|---------|---------|
-| **Entity** | Object with identity | User, Order |
-| **Value Object** | Object without identity | Money, Address |
-| **Aggregate** | Cluster of entities with root | Order + LineItems |
-| **Domain Event** | Something that happened | OrderPlaced, PaymentReceived |
-| **Repository** | Collection-like access to aggregates | OrderRepository |
-| **Domain Service** | Logic that doesn't fit entities | PricingService |
+| Pattern            | Purpose                              | Example                      |
+| ------------------ | ------------------------------------ | ---------------------------- |
+| **Entity**         | Object with identity                 | User, Order                  |
+| **Value Object**   | Object without identity              | Money, Address               |
+| **Aggregate**      | Cluster of entities with root        | Order + LineItems            |
+| **Domain Event**   | Something that happened              | OrderPlaced, PaymentReceived |
+| **Repository**     | Collection-like access to aggregates | OrderRepository              |
+| **Domain Service** | Logic that doesn't fit entities      | PricingService               |
 
 ---
 
@@ -193,33 +193,33 @@ Event Source → Event Bus → Event Handlers
 
 ### Scalability Patterns
 
-| Pattern | Description | Trade-off |
-|---------|-------------|-----------|
-| **Horizontal Scaling** | Add more instances | Statelessness required |
-| **Vertical Scaling** | Bigger machines | Hardware limits |
-| **Caching** | Store computed results | Cache invalidation |
-| **Database Sharding** | Split data across DBs | Query complexity |
-| **Read Replicas** | Separate read/write | Eventual consistency |
-| **CDN** | Edge content delivery | Static content only |
+| Pattern                | Description            | Trade-off              |
+| ---------------------- | ---------------------- | ---------------------- |
+| **Horizontal Scaling** | Add more instances     | Statelessness required |
+| **Vertical Scaling**   | Bigger machines        | Hardware limits        |
+| **Caching**            | Store computed results | Cache invalidation     |
+| **Database Sharding**  | Split data across DBs  | Query complexity       |
+| **Read Replicas**      | Separate read/write    | Eventual consistency   |
+| **CDN**                | Edge content delivery  | Static content only    |
 
 ### Resilience Patterns
 
-| Pattern | Purpose | Implementation |
-|---------|---------|----------------|
-| **Circuit Breaker** | Prevent cascade failures | Fail fast when downstream is down |
-| **Retry with Backoff** | Handle transient failures | Exponential delay between retries |
-| **Bulkhead** | Isolate failures | Separate thread pools per dependency |
-| **Timeout** | Bound waiting time | Max wait for responses |
-| **Fallback** | Graceful degradation | Default behavior when service unavailable |
+| Pattern                | Purpose                   | Implementation                            |
+| ---------------------- | ------------------------- | ----------------------------------------- |
+| **Circuit Breaker**    | Prevent cascade failures  | Fail fast when downstream is down         |
+| **Retry with Backoff** | Handle transient failures | Exponential delay between retries         |
+| **Bulkhead**           | Isolate failures          | Separate thread pools per dependency      |
+| **Timeout**            | Bound waiting time        | Max wait for responses                    |
+| **Fallback**           | Graceful degradation      | Default behavior when service unavailable |
 
 ### Data Consistency Patterns
 
-| Pattern | Consistency | Use When |
-|---------|-------------|----------|
-| **ACID Transactions** | Strong | Financial data, critical operations |
-| **Saga** | Eventual | Distributed transactions |
-| **Event Sourcing** | Eventual | Audit trails, complex state |
-| **CQRS** | Eventual | Different read/write models |
+| Pattern               | Consistency | Use When                            |
+| --------------------- | ----------- | ----------------------------------- |
+| **ACID Transactions** | Strong      | Financial data, critical operations |
+| **Saga**              | Eventual    | Distributed transactions            |
+| **Event Sourcing**    | Eventual    | Audit trails, complex state         |
+| **CQRS**              | Eventual    | Different read/write models         |
 
 ---
 
@@ -227,24 +227,24 @@ Event Source → Event Bus → Event Handlers
 
 ### When to Use a Database
 
-| Need | Recommended | Avoid |
-|------|-------------|-------|
-| Relational data, ACID | PostgreSQL, MySQL | MongoDB |
-| Document storage, flexible schema | MongoDB, DynamoDB | Relational |
-| Key-value, high speed | Redis, Memcached | Relational |
-| Time series | InfluxDB, TimescaleDB | Generic SQL |
-| Graph relationships | Neo4j, Neptune | Relational (for complex) |
-| Search | Elasticsearch, Meilisearch | Full table scans |
+| Need                              | Recommended                | Avoid                    |
+| --------------------------------- | -------------------------- | ------------------------ |
+| Relational data, ACID             | PostgreSQL, MySQL          | MongoDB                  |
+| Document storage, flexible schema | MongoDB, DynamoDB          | Relational               |
+| Key-value, high speed             | Redis, Memcached           | Relational               |
+| Time series                       | InfluxDB, TimescaleDB      | Generic SQL              |
+| Graph relationships               | Neo4j, Neptune             | Relational (for complex) |
+| Search                            | Elasticsearch, Meilisearch | Full table scans         |
 
 ### When to Use Message Queues
 
-| Need | Pattern |
-|------|---------|
-| Async processing | Queue (SQS, RabbitMQ) |
-| Event broadcasting | Pub/Sub (SNS, Kafka) |
-| Task scheduling | Delayed queues |
-| Load leveling | Queue with workers |
-| Event sourcing | Log-based (Kafka) |
+| Need               | Pattern               |
+| ------------------ | --------------------- |
+| Async processing   | Queue (SQS, RabbitMQ) |
+| Event broadcasting | Pub/Sub (SNS, Kafka)  |
+| Task scheduling    | Delayed queues        |
+| Load leveling      | Queue with workers    |
+| Event sourcing     | Log-based (Kafka)     |
 
 ---
 
@@ -256,24 +256,31 @@ Event Source → Event Bus → Event Handlers
 # ADR-001: [Title]
 
 ## Status
+
 [Proposed | Accepted | Deprecated | Superseded by ADR-XXX]
 
 ## Context
+
 [Why is this decision needed?]
 
 ## Decision
+
 [What is the decision?]
 
 ## Consequences
+
 ### Positive
+
 - [Benefit 1]
 - [Benefit 2]
 
 ### Negative
+
 - [Trade-off 1]
 - [Trade-off 2]
 
 ## Alternatives Considered
+
 1. [Alternative 1] - [Why rejected]
 2. [Alternative 2] - [Why rejected]
 ```

@@ -13,11 +13,15 @@ export default tool({
     pattern: tool.schema
       .string()
       .optional()
-      .describe("The regex pattern to search for in file contents. Can be omitted if using --files or --type-list."),
+      .describe(
+        "The regex pattern to search for in file contents. Can be omitted if using --files or --type-list.",
+      ),
     path: tool.schema
       .string()
       .optional()
-      .describe("File or directory to search in. Defaults to current working directory."),
+      .describe(
+        "File or directory to search in. Defaults to current working directory.",
+      ),
     paths: tool.schema
       .array(tool.schema.string())
       .optional()
@@ -25,11 +29,15 @@ export default tool({
     glob: tool.schema
       .array(tool.schema.string())
       .optional()
-      .describe("Include or exclude files by glob pattern (e.g., '*.js', '!*.test.ts'). Supports .gitignore-style globs."),
+      .describe(
+        "Include or exclude files by glob pattern (e.g., '*.js', '!*.test.ts'). Supports .gitignore-style globs.",
+      ),
     type: tool.schema
       .array(tool.schema.string())
       .optional()
-      .describe("Only search files matching this file type (e.g., 'py', 'rs', 'ts', 'js', 'md'). Use --type-list to see all."),
+      .describe(
+        "Only search files matching this file type (e.g., 'py', 'rs', 'ts', 'js', 'md'). Use --type-list to see all.",
+      ),
     typeNot: tool.schema
       .array(tool.schema.string())
       .optional()
@@ -37,15 +45,21 @@ export default tool({
     fixedStrings: tool.schema
       .boolean()
       .optional()
-      .describe("Treat pattern as a literal string, not a regex (equivalent to grep -F)."),
+      .describe(
+        "Treat pattern as a literal string, not a regex (equivalent to grep -F).",
+      ),
     ignoreCase: tool.schema
       .boolean()
       .optional()
-      .describe("Search case insensitively. Overrides --case-sensitive and --smart-case."),
+      .describe(
+        "Search case insensitively. Overrides --case-sensitive and --smart-case.",
+      ),
     smartCase: tool.schema
       .boolean()
       .optional()
-      .describe("Search case insensitively if pattern is all lowercase, otherwise case sensitive."),
+      .describe(
+        "Search case insensitively if pattern is all lowercase, otherwise case sensitive.",
+      ),
     invertMatch: tool.schema
       .boolean()
       .optional()
@@ -61,7 +75,9 @@ export default tool({
     multiline: tool.schema
       .boolean()
       .optional()
-      .describe("Enable searching across multiple lines (allows \\n in patterns)."),
+      .describe(
+        "Enable searching across multiple lines (allows \\n in patterns).",
+      ),
     pcre2: tool.schema
       .boolean()
       .optional()
@@ -69,11 +85,15 @@ export default tool({
     encoding: tool.schema
       .string()
       .optional()
-      .describe("Text encoding of files (e.g., 'utf-8', 'utf-16', 'shift-jis', 'auto', 'none')."),
+      .describe(
+        "Text encoding of files (e.g., 'utf-8', 'utf-16', 'shift-jis', 'auto', 'none').",
+      ),
     hidden: tool.schema
       .boolean()
       .optional()
-      .describe("Search hidden files and directories (those starting with dot)."),
+      .describe(
+        "Search hidden files and directories (those starting with dot).",
+      ),
     follow: tool.schema
       .boolean()
       .optional()
@@ -89,7 +109,9 @@ export default tool({
     unrestricted: tool.schema
       .number()
       .optional()
-      .describe("Level of unrestricted search (1-3). 1=no ignore, 2=+hidden, 3=+binary."),
+      .describe(
+        "Level of unrestricted search (1-3). 1=no ignore, 2=+hidden, 3=+binary.",
+      ),
     context: tool.schema
       .number()
       .optional()
@@ -153,7 +175,9 @@ export default tool({
     replace: tool.schema
       .string()
       .optional()
-      .describe("Replace every match with the given text. Supports capture groups ($1, $2, etc.)."),
+      .describe(
+        "Replace every match with the given text. Supports capture groups ($1, $2, etc.).",
+      ),
     maxCount: tool.schema
       .number()
       .optional()
@@ -165,7 +189,9 @@ export default tool({
     maxFilesize: tool.schema
       .string()
       .optional()
-      .describe("Ignore files larger than this size (e.g., '50K', '80M', '1G')."),
+      .describe(
+        "Ignore files larger than this size (e.g., '50K', '80M', '1G').",
+      ),
     color: tool.schema
       .string()
       .optional()
@@ -173,7 +199,9 @@ export default tool({
     quiet: tool.schema
       .boolean()
       .optional()
-      .describe("Do not print anything to stdout. Exit code indicates match found."),
+      .describe(
+        "Do not print anything to stdout. Exit code indicates match found.",
+      ),
     stats: tool.schema
       .boolean()
       .optional()
@@ -181,11 +209,15 @@ export default tool({
     sort: tool.schema
       .string()
       .optional()
-      .describe("Sort results: 'none', 'path', 'modified', 'accessed', 'created'."),
+      .describe(
+        "Sort results: 'none', 'path', 'modified', 'accessed', 'created'.",
+      ),
     sortr: tool.schema
       .string()
       .optional()
-      .describe("Sort in descending order: 'none', 'path', 'modified', 'accessed', 'created'."),
+      .describe(
+        "Sort in descending order: 'none', 'path', 'modified', 'accessed', 'created'.",
+      ),
     byteOffset: tool.schema
       .boolean()
       .optional()
@@ -205,7 +237,9 @@ export default tool({
     binary: tool.schema
       .boolean()
       .optional()
-      .describe("Search binary files but stop after first NUL byte after a match."),
+      .describe(
+        "Search binary files but stop after first NUL byte after a match.",
+      ),
     engine: tool.schema
       .string()
       .optional()
@@ -221,7 +255,9 @@ export default tool({
     contextSeparator: tool.schema
       .string()
       .optional()
-      .describe("String to separate non-contiguous context lines (default '--')."),
+      .describe(
+        "String to separate non-contiguous context lines (default '--').",
+      ),
     noContextSeparator: tool.schema
       .boolean()
       .optional()
@@ -237,7 +273,9 @@ export default tool({
     vimgrep: tool.schema
       .boolean()
       .optional()
-      .describe("Print every match on its own line with line and column numbers."),
+      .describe(
+        "Print every match on its own line with line and column numbers.",
+      ),
     files: tool.schema
       .boolean()
       .optional()
@@ -349,7 +387,9 @@ export default tool({
           rgArgs.push("-u");
         }
       } else {
-        warnings.push(`WARNING: unrestricted must be 1-3, got ${args.unrestricted}, ignoring`);
+        warnings.push(
+          `WARNING: unrestricted must be 1-3, got ${args.unrestricted}, ignoring`,
+        );
       }
     }
 
@@ -423,15 +463,32 @@ export default tool({
         return `ERROR: rg process failed (exit code ${error.status || "unknown"}). Check arguments and try again.`;
       }
 
-      const lines = stderr.split("\n").map(l => l.trim()).filter(Boolean);
-      const lastError = lines.filter(l =>
-        l.startsWith("error:") || l.startsWith("Error:") || l.startsWith("rg:")
-      ).pop() || lines[lines.length - 1] || "Unknown error";
+      const lines = stderr
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean);
+      const lastError =
+        lines
+          .filter(
+            (l) =>
+              l.startsWith("error:") ||
+              l.startsWith("Error:") ||
+              l.startsWith("rg:"),
+          )
+          .pop() ||
+        lines[lines.length - 1] ||
+        "Unknown error";
 
-      if (lastError.includes("No such file") || lastError.includes("No such file or directory")) {
+      if (
+        lastError.includes("No such file") ||
+        lastError.includes("No such file or directory")
+      ) {
         return `ERROR: File or directory not found. Verify the path exists.`;
       }
-      if (lastError.includes("regex parse error") || lastError.includes("error:")) {
+      if (
+        lastError.includes("regex parse error") ||
+        lastError.includes("error:")
+      ) {
         const clean = lastError
           .replace(/^rg: /, "")
           .replace(/^error: /i, "")

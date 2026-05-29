@@ -51,12 +51,12 @@ Focus on:
 
 ### Types of Profiling
 
-| Type | What It Measures | Tools |
-|------|------------------|-------|
-| CPU Profiling | Time spent in functions | pprof, py-spy, Chrome DevTools |
-| Memory Profiling | Allocation patterns, leaks | Valgrind, memory_profiler, Chrome |
-| I/O Profiling | Disk/network operations | strace, perf, Wireshark |
-| Database Profiling | Query performance | EXPLAIN, slow query log, APM |
+| Type               | What It Measures           | Tools                             |
+| ------------------ | -------------------------- | --------------------------------- |
+| CPU Profiling      | Time spent in functions    | pprof, py-spy, Chrome DevTools    |
+| Memory Profiling   | Allocation patterns, leaks | Valgrind, memory_profiler, Chrome |
+| I/O Profiling      | Disk/network operations    | strace, perf, Wireshark           |
+| Database Profiling | Query performance          | EXPLAIN, slow query log, APM      |
 
 ### Profiling Workflow
 
@@ -181,14 +181,14 @@ BEST (generator):
 
 ### Database Optimization
 
-| Technique | When to Use | Impact |
-|-----------|-------------|--------|
-| **Indexing** | Slow WHERE/JOIN queries | High |
-| **Query optimization** | Complex queries | High |
-| **Connection pooling** | Many short connections | Medium |
-| **Read replicas** | Read-heavy workloads | High |
-| **Caching** | Repeated queries | Very High |
-| **Denormalization** | Complex JOINs | Medium |
+| Technique              | When to Use             | Impact    |
+| ---------------------- | ----------------------- | --------- |
+| **Indexing**           | Slow WHERE/JOIN queries | High      |
+| **Query optimization** | Complex queries         | High      |
+| **Connection pooling** | Many short connections  | Medium    |
+| **Read replicas**      | Read-heavy workloads    | High      |
+| **Caching**            | Repeated queries        | Very High |
+| **Denormalization**    | Complex JOINs           | Medium    |
 
 ### Index Guidelines
 
@@ -205,12 +205,12 @@ EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
 
 ### Caching Strategies
 
-| Strategy | Use Case | Invalidation |
-|----------|----------|--------------|
-| **Cache-aside** | General purpose | Manual or TTL |
-| **Write-through** | Strong consistency | On write |
-| **Write-behind** | Write-heavy | Async batched |
-| **Read-through** | Read-heavy | On miss |
+| Strategy          | Use Case           | Invalidation  |
+| ----------------- | ------------------ | ------------- |
+| **Cache-aside**   | General purpose    | Manual or TTL |
+| **Write-through** | Strong consistency | On write      |
+| **Write-behind**  | Write-heavy        | Async batched |
+| **Read-through**  | Read-heavy         | On miss       |
 
 ```
 Cache-aside pattern:
@@ -222,12 +222,12 @@ Cache-aside pattern:
 
 ### Memory Optimization
 
-| Technique | When to Use |
-|-----------|-------------|
-| Object pooling | Frequent allocation of same type |
-| Lazy loading | Large objects not always needed |
-| Streaming | Processing large datasets |
-| Weak references | Cache that can be evicted |
+| Technique             | When to Use                        |
+| --------------------- | ---------------------------------- |
+| Object pooling        | Frequent allocation of same type   |
+| Lazy loading          | Large objects not always needed    |
+| Streaming             | Processing large datasets          |
+| Weak references       | Cache that can be evicted          |
 | Data structure choice | Right structure for access pattern |
 
 ---
@@ -236,11 +236,11 @@ Cache-aside pattern:
 
 ### Core Web Vitals
 
-| Metric | Target | What It Measures |
-|--------|--------|------------------|
-| LCP (Largest Contentful Paint) | < 2.5s | Load performance |
-| INP (Interaction to Next Paint) | < 200ms | Interactivity |
-| CLS (Cumulative Layout Shift) | < 0.1 | Visual stability |
+| Metric                          | Target  | What It Measures |
+| ------------------------------- | ------- | ---------------- |
+| LCP (Largest Contentful Paint)  | < 2.5s  | Load performance |
+| INP (Interaction to Next Paint) | < 200ms | Interactivity    |
+| CLS (Cumulative Layout Shift)   | < 0.1   | Visual stability |
 
 ### Frontend Optimization Checklist
 
@@ -279,22 +279,22 @@ npx depcheck
 
 ### Response Time Targets
 
-| Percentile | Target | User Experience |
-|------------|--------|-----------------|
-| p50 | < 100ms | Fast |
-| p95 | < 500ms | Acceptable |
-| p99 | < 1s | Tolerable |
+| Percentile | Target  | User Experience |
+| ---------- | ------- | --------------- |
+| p50        | < 100ms | Fast            |
+| p95        | < 500ms | Acceptable      |
+| p99        | < 1s    | Tolerable       |
 
 ### API Optimization Techniques
 
-| Technique | Benefit |
-|-----------|---------|
-| Response compression | Reduce transfer size |
-| Pagination | Limit response size |
-| Field selection | Return only needed data |
-| ETags/Caching headers | Reduce redundant requests |
-| Connection keep-alive | Reduce handshake overhead |
-| HTTP/2 | Multiplexing, header compression |
+| Technique             | Benefit                          |
+| --------------------- | -------------------------------- |
+| Response compression  | Reduce transfer size             |
+| Pagination            | Limit response size              |
+| Field selection       | Return only needed data          |
+| ETags/Caching headers | Reduce redundant requests        |
+| Connection keep-alive | Reduce handshake overhead        |
+| HTTP/2                | Multiplexing, header compression |
 
 ### Batch Endpoints
 
@@ -315,12 +315,12 @@ GOOD (batch):
 
 ### Key Metrics to Track
 
-| Category | Metrics |
-|----------|---------|
-| Latency | p50, p95, p99 response times |
-| Throughput | Requests per second |
-| Errors | Error rate, error types |
-| Saturation | CPU, memory, connections |
+| Category   | Metrics                      |
+| ---------- | ---------------------------- |
+| Latency    | p50, p95, p99 response times |
+| Throughput | Requests per second          |
+| Errors     | Error rate, error types      |
+| Saturation | CPU, memory, connections     |
 
 ### Alerting Thresholds
 
@@ -360,35 +360,35 @@ def timed_operation(func):
 
 ### Load Testing Tools
 
-| Tool | Use Case |
-|------|----------|
-| k6 | Modern, scriptable load testing |
-| JMeter | Complex scenarios, GUI |
-| Locust | Python-based, distributed |
-| Artillery | YAML config, easy to start |
-| wrk | Simple HTTP benchmarking |
+| Tool      | Use Case                        |
+| --------- | ------------------------------- |
+| k6        | Modern, scriptable load testing |
+| JMeter    | Complex scenarios, GUI          |
+| Locust    | Python-based, distributed       |
+| Artillery | YAML config, easy to start      |
+| wrk       | Simple HTTP benchmarking        |
 
 ### Load Test Example (k6)
 
 ```javascript
-import http from 'k6/http';
-import { check, sleep } from 'k6';
+import http from "k6/http";
+import { check, sleep } from "k6";
 
 export const options = {
   stages: [
-    { duration: '1m', target: 50 },   // Ramp up
-    { duration: '5m', target: 50 },   // Stay at 50 users
-    { duration: '1m', target: 0 },    // Ramp down
+    { duration: "1m", target: 50 }, // Ramp up
+    { duration: "5m", target: 50 }, // Stay at 50 users
+    { duration: "1m", target: 0 }, // Ramp down
   ],
   thresholds: {
-    http_req_duration: ['p(95)<500'],  // 95% under 500ms
-    http_req_failed: ['rate<0.01'],    // Error rate < 1%
+    http_req_duration: ["p(95)<500"], // 95% under 500ms
+    http_req_failed: ["rate<0.01"], // Error rate < 1%
   },
 };
 
 export default function () {
-  const res = http.get('https://api.example.com/users');
-  check(res, { 'status is 200': (r) => r.status === 200 });
+  const res = http.get("https://api.example.com/users");
+  check(res, { "status is 200": (r) => r.status === 200 });
   sleep(1);
 }
 ```

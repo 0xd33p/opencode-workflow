@@ -10,14 +10,15 @@
 
 ## 🌟 Key Features
 
-| Component | Stats | Description |
-| :--- | :---: | :--- |
-| **🤖 Specialized Agents** | **7** | An Orchestrator plus 6 expert agents (Security, Tests, Docs, etc.) |
-| **⌨️ Custom Commands** | **12** | One-tap workflows like `/review`, `/commit`, `/architect`, and more. |
-| **🧠 Domain Skills** | **7** | Deep knowledge bases for APIs, Performance, and Architecture. |
-| **🔌 Smart Plugins** | **5** | Automated guardrails: formatting, security scans, and notifications. |
+| Component                 | Stats  | Description                                                          |
+| :------------------------ | :----: | :------------------------------------------------------------------- |
+| **🤖 Specialized Agents** | **7**  | An Orchestrator plus 6 expert agents (Security, Tests, Docs, etc.)   |
+| **⌨️ Custom Commands**    | **12** | One-tap workflows like `/review`, `/commit`, `/architect`, and more. |
+| **🧠 Domain Skills**      | **7**  | Deep knowledge bases for APIs, Performance, and Architecture.        |
+| **🔌 Smart Plugins**      | **5**  | Automated guardrails: formatting, security scans, and notifications. |
 
 ### ⚡ Parallel Execution Engine
+
 Traditional workflows are sequential. OpenCode is built for **speed**.
 
 ```mermaid
@@ -32,6 +33,7 @@ graph LR
     TA --> Report
     DB --> Report
 ```
+
 > **Pro Tip:** Independent tasks run simultaneously. Five 30-second reviews take 30 seconds total, not 2.5 minutes.
 
 ---
@@ -41,12 +43,14 @@ graph LR
 OpenCode looks for workflow files in a hidden `.opencode/` directory within your project.
 
 ### 1. Clone the Source
+
 ```bash
 git clone https://github.com/0xd33p/opencode-workflow.git
 cd opencode-workflow
 ```
 
 ### 2. Setup Your Project
+
 Map the repository folders to the standard OpenCode structure:
 
 ```bash
@@ -61,36 +65,41 @@ cp -r plugins/  your-project/.opencode/plugin
 ```
 
 ### 🗺️ Folder Mapping Reference
-| Source Folder | Destination Folder |
-| :--- | :--- |
-| `agents/` | `.opencode/agent/` |
-| `commands/` | `.opencode/command/` |
-| `skills/` | `.opencode/skill/` |
-| `plugins/` | `.opencode/plugin/` |
+
+| Source Folder | Destination Folder   |
+| :------------ | :------------------- |
+| `agents/`     | `.opencode/agent/`   |
+| `commands/`   | `.opencode/command/` |
+| `skills/`     | `.opencode/skill/`   |
+| `plugins/`    | `.opencode/plugin/`  |
 
 ---
 
 ## 🛠️ Usage Guide
 
 ### 🎭 Primary Agents
+
 Press **`Tab`** to cycle through the heavy-lifters:
+
 - **`build`**: Your everyday companion for full development work.
 - **`plan`**: For analysis and strategy (Read-only mode).
 - **`orchestrator`**: Coordinates complex, multi-step operations.
 
 ### 👥 The Specialist Squad
+
 Invoke experts using **`@mention`** for surgical precision:
 
-| Subagent | Mandate | Capabilities |
-| :--- | :--- | :---: |
-| `@code-reviewer` | Patterns & Maintainability | 🔍 Read |
-| `@debugger` | Root cause investigation | 💻 Bash |
-| `@security-auditor` | OWASP & Vulnerabilities | 🛡️ Audit |
-| `@refactorer` | Clean code & Design | ✍️ Edit |
-| `@test-architect` | Strategy & Coverage | ✅ Test |
-| `@docs-writer` | READMEs & Documentation | 📝 Write |
+| Subagent            | Mandate                    | Capabilities |
+| :------------------ | :------------------------- | :----------: |
+| `@code-reviewer`    | Patterns & Maintainability |   🔍 Read    |
+| `@debugger`         | Root cause investigation   |   💻 Bash    |
+| `@security-auditor` | OWASP & Vulnerabilities    |   🛡️ Audit   |
+| `@refactorer`       | Clean code & Design        |   ✍️ Edit    |
+| `@test-architect`   | Strategy & Coverage        |   ✅ Test    |
+| `@docs-writer`      | READMEs & Documentation    |   📝 Write   |
 
 ### ⚡ Power Commands
+
 Trigger complex workflows using **`/`**:
 
 - `/review` — Multi-perspective deep dive.
@@ -104,17 +113,22 @@ Trigger complex workflows using **`/`**:
 ## 🧠 Core Philosophy
 
 ### 🏗️ The Orchestrator Pattern
+
 Instead of a "Jack of all trades," we use a master coordinator:
 `UNDERSTAND ➔ PLAN ➔ DELEGATE ➔ INTEGRATE ➔ VERIFY ➔ DELIVER`
 
 ### ⚔️ Adversarial Verification
+
 Why rely on one opinion? Our agents challenge each other:
+
 - **Security Auditor:** "How can I break this?"
 - **Code Reviewer:** "Is this clean and maintainable?"
 - **Test Architect:** "Is this actually verified?"
 
 ### 🛡️ Guardrails Without Friction
+
 Plugins work in the background to keep you safe:
+
 - **Security Scan:** Blocks leaks of `.env` or API keys.
 - **Auto-Format:** Runs Prettier/Black automatically.
 - **Parallel Guard:** Optimizes multi-agent performance.

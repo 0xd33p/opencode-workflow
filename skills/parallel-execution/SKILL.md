@@ -54,6 +54,7 @@ Total time ≈ max(A, B, C) = 30 seconds
 ### Step 1: Identify Independent Tasks
 
 Tasks are independent when:
+
 - They don't depend on each other's output
 - They don't modify the same files
 - They can run in any order
@@ -173,10 +174,26 @@ When using parallel execution, mark ALL parallel tasks as `in_progress` simultan
 ```json
 {
   "todos": [
-    { "content": "Analyze auth module", "status": "in_progress", "activeForm": "Analyzing auth module" },
-    { "content": "Analyze API layer", "status": "in_progress", "activeForm": "Analyzing API layer" },
-    { "content": "Analyze database layer", "status": "in_progress", "activeForm": "Analyzing database layer" },
-    { "content": "Synthesize findings", "status": "pending", "activeForm": "Synthesizing findings" }
+    {
+      "content": "Analyze auth module",
+      "status": "in_progress",
+      "activeForm": "Analyzing auth module"
+    },
+    {
+      "content": "Analyze API layer",
+      "status": "in_progress",
+      "activeForm": "Analyzing API layer"
+    },
+    {
+      "content": "Analyze database layer",
+      "status": "in_progress",
+      "activeForm": "Analyzing database layer"
+    },
+    {
+      "content": "Synthesize findings",
+      "status": "pending",
+      "activeForm": "Synthesizing findings"
+    }
   ]
 }
 ```
@@ -188,10 +205,26 @@ Mark as completed as results come in:
 ```json
 {
   "todos": [
-    { "content": "Analyze auth module", "status": "completed", "activeForm": "Analyzing auth module" },
-    { "content": "Analyze API layer", "status": "completed", "activeForm": "Analyzing API layer" },
-    { "content": "Analyze database layer", "status": "in_progress", "activeForm": "Analyzing database layer" },
-    { "content": "Synthesize findings", "status": "pending", "activeForm": "Synthesizing findings" }
+    {
+      "content": "Analyze auth module",
+      "status": "completed",
+      "activeForm": "Analyzing auth module"
+    },
+    {
+      "content": "Analyze API layer",
+      "status": "completed",
+      "activeForm": "Analyzing API layer"
+    },
+    {
+      "content": "Analyze database layer",
+      "status": "in_progress",
+      "activeForm": "Analyzing database layer"
+    },
+    {
+      "content": "Synthesize findings",
+      "status": "pending",
+      "activeForm": "Synthesizing findings"
+    }
   ]
 }
 ```
@@ -202,36 +235,36 @@ Mark as completed as results come in:
 
 ### Good Candidates
 
-| Scenario | Parallel Approach |
-|----------|-------------------|
-| Multiple independent analyses | One subagent per analysis |
-| Multi-file processing | One subagent per file/directory |
-| Different review perspectives | One subagent per perspective |
-| Multiple independent features | One subagent per feature |
-| Exploratory research | Multiple search strategies |
+| Scenario                      | Parallel Approach               |
+| ----------------------------- | ------------------------------- |
+| Multiple independent analyses | One subagent per analysis       |
+| Multi-file processing         | One subagent per file/directory |
+| Different review perspectives | One subagent per perspective    |
+| Multiple independent features | One subagent per feature        |
+| Exploratory research          | Multiple search strategies      |
 
 ### When NOT to Parallelize
 
-| Scenario | Why Sequential |
-|----------|----------------|
-| Tasks with dependencies | B needs A's output |
-| Same file modifications | Risk of conflicts |
-| Sequential workflows | Order matters (commit → push → PR) |
-| Shared state | Race conditions |
-| Limited resources | Overwhelming the system |
+| Scenario                | Why Sequential                     |
+| ----------------------- | ---------------------------------- |
+| Tasks with dependencies | B needs A's output                 |
+| Same file modifications | Risk of conflicts                  |
+| Sequential workflows    | Order matters (commit → push → PR) |
+| Shared state            | Race conditions                    |
+| Limited resources       | Overwhelming the system            |
 
 ---
 
 ## Performance Impact
 
 | # Parallel Tasks | Sequential Time | Parallel Time | Speedup |
-|------------------|-----------------|---------------|---------|
-| 2 | 60s | 30s | 2x |
-| 3 | 90s | 30s | 3x |
-| 5 | 150s | 30s | 5x |
-| 10 | 300s | 30s | 10x |
+| ---------------- | --------------- | ------------- | ------- |
+| 2                | 60s             | 30s           | 2x      |
+| 3                | 90s             | 30s           | 3x      |
+| 5                | 150s            | 30s           | 5x      |
+| 10               | 300s            | 30s           | 10x     |
 
-*Assuming each task takes ~30 seconds*
+_Assuming each task takes ~30 seconds_
 
 ---
 

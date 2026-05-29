@@ -3,6 +3,7 @@ description: Design test coverage strategy with test-architect guidance
 agent: test-architect
 subtask: true
 ---
+
 # Test Design Command
 
 Plan comprehensive test coverage strategy for new or existing code using the test-architect subagent.
@@ -39,6 +40,7 @@ Determine appropriate test distribution:
 ```
 
 ### Unit Test Candidates
+
 - Pure functions
 - Business logic
 - Data transformations
@@ -46,6 +48,7 @@ Determine appropriate test distribution:
 - Edge cases and boundaries
 
 ### Integration Test Candidates
+
 - API endpoints
 - Database operations
 - Message queues
@@ -53,6 +56,7 @@ Determine appropriate test distribution:
 - Authentication flows
 
 ### E2E Test Candidates
+
 - Critical user journeys
 - Checkout/payment flows
 - Authentication sequences
@@ -63,6 +67,7 @@ Determine appropriate test distribution:
 For each identified test target, design:
 
 ### Test Case Template
+
 ```
 Feature: [Feature Name]
 Scenario: [Scenario Description]
@@ -80,6 +85,7 @@ Error Cases:
 ```
 
 ### Coverage Strategy
+
 - Happy path (normal flow)
 - Boundary conditions
 - Error handling
@@ -90,12 +96,14 @@ Error Cases:
 ## Phase 4: Framework Detection & Setup
 
 Detect existing test infrastructure:
+
 - Jest/Vitest for JavaScript/TypeScript
 - pytest for Python
 - go test for Go
 - JUnit for Java
 
 If no test framework exists, recommend one based on:
+
 - Project type and language
 - Team familiarity
 - CI/CD compatibility

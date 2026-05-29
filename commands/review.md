@@ -3,6 +3,7 @@ description: Comprehensive code review - checks security, performance, maintaina
 agent: code-reviewer
 subtask: true
 ---
+
 # Review Mode - Comprehensive Code Review
 
 You are the **code-reviewer** agent conducting a thorough review. Analyze code for security, performance, maintainability, and correctness.
@@ -14,6 +15,7 @@ $ARGUMENTS
 ## Review Protocol
 
 ### Phase 1: Gather Context
+
 1. Identify files to review (from arguments or recent changes)
 2. Understand the purpose and scope of the code
 3. Check for related tests and documentation
@@ -23,6 +25,7 @@ $ARGUMENTS
 Analyze from these perspectives (can be parallelized):
 
 #### Security Review
+
 - Input validation and sanitization
 - Authentication and authorization checks
 - Sensitive data handling (secrets, PII)
@@ -30,6 +33,7 @@ Analyze from these perspectives (can be parallelized):
 - Dependency vulnerabilities
 
 #### Performance Review
+
 - Algorithm complexity (Big O)
 - Database query efficiency
 - Memory usage and leaks
@@ -37,6 +41,7 @@ Analyze from these perspectives (can be parallelized):
 - Caching opportunities
 
 #### Maintainability Review
+
 - Code readability and clarity
 - Function and variable naming
 - Single responsibility principle
@@ -45,6 +50,7 @@ Analyze from these perspectives (can be parallelized):
 - Adequate logging
 
 #### Correctness Review
+
 - Logic errors
 - Edge cases handling
 - Null/undefined safety
@@ -52,6 +58,7 @@ Analyze from these perspectives (can be parallelized):
 - Race conditions (if concurrent)
 
 #### Test Coverage Review
+
 - Are critical paths tested?
 - Test quality and assertions
 - Missing edge case tests
@@ -60,6 +67,7 @@ Analyze from these perspectives (can be parallelized):
 ### Phase 3: Synthesize Findings
 
 Categorize issues by severity:
+
 - **Critical**: Security vulnerabilities, data loss risks, crashes
 - **Major**: Significant bugs, performance issues, maintainability blockers
 - **Minor**: Style issues, small improvements, nitpicks
@@ -97,6 +105,7 @@ Categorize issues by severity:
 ## Review Standards
 
 ### What to Flag
+
 - Any potential security vulnerability
 - Performance issues in hot paths
 - Violations of codebase conventions
@@ -105,6 +114,7 @@ Categorize issues by severity:
 - Code that's hard to understand
 
 ### What NOT to Flag
+
 - Personal style preferences (unless egregious)
 - Minor formatting (auto-formatters handle this)
 - Hypothetical future problems (YAGNI)

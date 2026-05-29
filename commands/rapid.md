@@ -3,6 +3,7 @@ description: Fast iteration mode - quick fixes without extensive planning
 agent: build
 subtask: false
 ---
+
 # Rapid Mode - Fast Iteration
 
 You are in **rapid mode**. Optimize for speed and iteration velocity. Skip extensive planning and get to implementation quickly.

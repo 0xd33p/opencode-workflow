@@ -89,18 +89,19 @@ Start by identifying how the application launches:
 
 ### Package Manager Analysis
 
-| File | Ecosystem | Key Sections |
-|------|-----------|--------------|
-| `package.json` | Node.js | dependencies, devDependencies |
-| `requirements.txt` / `pyproject.toml` | Python | direct dependencies |
-| `go.mod` | Go | require blocks |
-| `Cargo.toml` | Rust | dependencies |
-| `pom.xml` / `build.gradle` | Java | dependencies |
+| File                                  | Ecosystem | Key Sections                  |
+| ------------------------------------- | --------- | ----------------------------- |
+| `package.json`                        | Node.js   | dependencies, devDependencies |
+| `requirements.txt` / `pyproject.toml` | Python    | direct dependencies           |
+| `go.mod`                              | Go        | require blocks                |
+| `Cargo.toml`                          | Rust      | dependencies                  |
+| `pom.xml` / `build.gradle`            | Java      | dependencies                  |
 
 ### Internal Module Relationships
 
 1. **Trace imports** from entry points
 2. **Build a mental model** of layers:
+
    ```
    Presentation Layer (routes, controllers, views)
          ↓
@@ -119,13 +120,13 @@ Start by identifying how the application launches:
 
 ### Common Patterns to Identify
 
-| Pattern | Indicators | Typical Structure |
-|---------|------------|-------------------|
-| **MVC** | controllers/, models/, views/ | Clear separation of concerns |
-| **Hexagonal** | ports/, adapters/, domain/ | Dependency inversion |
-| **Microservices** | services/, docker-compose | Independent deployable units |
-| **Monolith** | Single large app, shared DB | Everything in one deployment |
-| **Serverless** | functions/, handlers/ | Event-driven, stateless |
+| Pattern           | Indicators                    | Typical Structure            |
+| ----------------- | ----------------------------- | ---------------------------- |
+| **MVC**           | controllers/, models/, views/ | Clear separation of concerns |
+| **Hexagonal**     | ports/, adapters/, domain/    | Dependency inversion         |
+| **Microservices** | services/, docker-compose     | Independent deployable units |
+| **Monolith**      | Single large app, shared DB   | Everything in one deployment |
+| **Serverless**    | functions/, handlers/         | Event-driven, stateless      |
 
 ### Architecture Questions
 
@@ -161,6 +162,7 @@ Database/External API
 ### State Management Analysis
 
 For frontend applications:
+
 - Where is state stored? (Redux, Zustand, Context)
 - How does data flow? (unidirectional, bidirectional)
 - What triggers re-renders?
@@ -171,13 +173,13 @@ For frontend applications:
 
 ### Code Health Indicators
 
-| Indicator | Good Sign | Warning Sign |
-|-----------|-----------|--------------|
-| Test coverage | >70% coverage | No tests, or tests ignored |
-| Dependencies | Recent versions | Major versions behind |
-| Documentation | README updated | Stale or missing docs |
-| Build time | Under 2 minutes | Over 10 minutes |
-| Error handling | Consistent patterns | Swallowed exceptions |
+| Indicator      | Good Sign           | Warning Sign               |
+| -------------- | ------------------- | -------------------------- |
+| Test coverage  | >70% coverage       | No tests, or tests ignored |
+| Dependencies   | Recent versions     | Major versions behind      |
+| Documentation  | README updated      | Stale or missing docs      |
+| Build time     | Under 2 minutes     | Over 10 minutes            |
+| Error handling | Consistent patterns | Swallowed exceptions       |
 
 ### Technical Debt Markers
 
@@ -238,20 +240,24 @@ Synthesize findings into unified architecture view.
 
 ```markdown
 ## Project Overview
+
 - **Language**: [Primary language]
 - **Framework**: [Main framework]
 - **Architecture**: [Pattern identified]
 - **Entry Point**: [Main file]
 
 ## Key Modules
+
 | Module | Responsibility | Key Files |
-|--------|----------------|-----------|
+| ------ | -------------- | --------- |
 | [Name] | [What it does] | [Files]   |
 
 ## Data Flow
+
 [Request lifecycle diagram]
 
 ## Notable Patterns
+
 - [Pattern 1]: [Where/how used]
 - [Pattern 2]: [Where/how used]
 ```
@@ -260,6 +266,7 @@ Synthesize findings into unified architecture view.
 
 ```markdown
 ## Getting Started
+
 - [ ] Clone and install dependencies
 - [ ] Run the app locally
 - [ ] Run the test suite

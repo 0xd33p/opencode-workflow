@@ -3,6 +3,7 @@ description: Generate documentation (API docs, READMEs, guides)
 agent: docs-writer
 subtask: true
 ---
+
 # Documentation Generation Command
 
 Generate comprehensive documentation using the docs-writer subagent. Creates API documentation, READMEs, and developer guides.
@@ -23,18 +24,21 @@ Determine documentation needs:
 Collect information for documentation:
 
 ### For API Documentation
+
 - Read source files with public interfaces
 - Extract function signatures, parameters, return types
 - Find existing JSDoc/docstrings
 - Identify example usage in tests
 
 ### For README
+
 - Read package.json / pyproject.toml for project metadata
 - Check existing README for structure to maintain
 - Look for setup scripts and configuration
 - Find example code or demos
 
 ### For Guides
+
 - Understand the feature/workflow being documented
 - Identify prerequisites and dependencies
 - Find related code and configuration
@@ -61,6 +65,7 @@ Brief description of what this function does.
 **Returns:** `ReturnType` - Description of return value
 
 **Throws:**
+
 - `ErrorType` - When condition occurs
 
 **Example:**
@@ -99,8 +104,8 @@ import { something } from 'package-name';
 
 ## Configuration
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
+| Option  | Type   | Default   | Description  |
+| ------- | ------ | --------- | ------------ |
 | option1 | string | 'default' | What it does |
 
 ## API Reference
@@ -135,7 +140,9 @@ What this guide covers and who it's for.
 Detailed instructions...
 
 \`\`\`bash
+
 # Example command
+
 \`\`\`
 
 ## Step 2: [Second Step]
@@ -145,9 +152,11 @@ Detailed instructions...
 ## Troubleshooting
 
 ### Common Issue 1
+
 Solution...
 
 ### Common Issue 2
+
 Solution...
 
 ## Next Steps
@@ -168,6 +177,7 @@ Before outputting documentation:
 ## Phase 5: Output
 
 Present documentation with:
+
 - Clear section headers
 - Proper markdown formatting
 - Code blocks with syntax highlighting

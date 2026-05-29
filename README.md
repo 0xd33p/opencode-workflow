@@ -55,18 +55,21 @@ Every support is greatly appreciated! 🙌
 OpenCode looks for workflow files in a hidden `.opencode/` directory within your project.
 
 ### 1. Fast Install (via npx)
+
 The quickest way to set up the workflow in your project:
+
 ```bash
 npx github:0xd33p/opencode-workflow
 ```
 
 ### 2. Manual Clone
+
 If you prefer to clone the source manually:
+
 ```bash
 git clone https://github.com/0xd33p/opencode-workflow.git
 cd opencode-workflow
 ```
-
 
 ### 2. Setup Your Project
 

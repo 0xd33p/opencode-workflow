@@ -38,6 +38,18 @@ graph LR
 
 ---
 
+## ☕ Support the Project
+
+If you find this project useful and want to support its development, you can buy me a coffee!
+
+- 🧧 **MoMo / ZaloPay:** 09x.xxx.xxxx (0xd33p)
+- 🏦 **Vietcombank:** 10xxxxxxxx (0xd33p)
+- ☕ **Ko-fi:** [ko-fi.com/0xd33p](https://ko-fi.com/0xd33p)
+
+Every support is greatly appreciated! 🙌
+
+---
+
 ## 📥 Installation
 
 OpenCode looks for workflow files in a hidden `.opencode/` directory within your project.

@@ -1,6 +1,6 @@
 /**
  * Notifications Plugin
- * Sends macOS notifications when sessions complete
+ * Sends notifications when sessions complete (macOS/Linux)
  */
 
 export const NotificationPlugin = async ({ $ }) => {
@@ -8,7 +8,11 @@ export const NotificationPlugin = async ({ $ }) => {
     event: async ({ event }) => {
       if (event.type === "session.idle") {
         try {
-          await $`osascript -e 'display notification "Session completed!" with title "OpenCode"'`
+          if (process.platform === "darwin") {
+            await $`osascript -e 'display notification "Session completed!" with title "OpenCode"'`
+          } else if (process.platform === "linux") {
+            await $`notify-send "OpenCode" "Session completed!"`
+          }
         } catch {
           // Ignore notification errors
         }

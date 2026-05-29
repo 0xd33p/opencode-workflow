@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 
 ### Refactor
 
-- **agents:** Migrate from deprecated tools to permission field Remove the deprecated 'tools' key from all 7 agent configs and add matching 'permission' entries using the new allow/ask/deny system. Changes: - code-reviewer: edit:deny, bash:deny - debugger: edit:deny, bash with glob patterns - docs-writer: edit:allow, bash:deny - orchestrator: edit:allow, bash:allow, task:*:allow - refactorer: edit:allow, bash:deny - security-auditor: edit:deny, bash:deny - test-architect: edit:allow, bash:deny
+- **agents:** Migrate from deprecated tools to permission field Remove the deprecated 'tools' key from all 7 agent configs and add matching 'permission' entries using the new allow/ask/deny system. Changes: - code-reviewer: edit:deny, bash:deny - debugger: edit:deny, bash with glob patterns - docs-writer: edit:allow, bash:deny - orchestrator: edit:allow, bash:allow, task:\*:allow - refactorer: edit:allow, bash:deny - security-auditor: edit:deny, bash:deny - test-architect: edit:allow, bash:deny
 
 ### Chore
 

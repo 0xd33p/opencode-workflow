@@ -3,11 +3,8 @@ description: Code refactoring specialist focusing on clean code, design patterns
 mode: subagent
 model: anthropic/claude-opus-4-5-20251101
 temperature: 0.2
-tools:
-  write: true
-  edit: true
-  bash: false
 permission:
+  edit: allow
   bash: deny
 ---
 

@@ -3,14 +3,9 @@ description: Adversarial code reviewer focusing on quality, maintainability, and
 mode: subagent
 model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
 permission:
   edit: deny
   bash: deny
-  webfetch: deny
 ---
 
 # Code Reviewer Agent

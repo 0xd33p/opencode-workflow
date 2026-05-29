@@ -3,14 +3,9 @@ description: Security vulnerability auditor focusing on OWASP Top 10 and common 
 mode: subagent
 model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
 permission:
   edit: deny
   bash: deny
-  webfetch: deny
 ---
 
 # Security Auditor Agent

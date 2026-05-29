@@ -3,11 +3,9 @@ description: Master coordinator that decomposes complex tasks, delegates to spec
 mode: primary
 model: anthropic/claude-opus-4-5-20251101
 temperature: 0.2
-tools:
-  write: true
-  edit: true
-  bash: true
 permission:
+  edit: allow
+  bash: allow
   task:
     "*": allow
 ---

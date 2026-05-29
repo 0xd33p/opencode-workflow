@@ -3,10 +3,6 @@ description: Systematic bug investigator with bash access for debugging. Use PRO
 mode: subagent
 model: anthropic/claude-opus-4-5-20251101
 temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: true
 permission:
   edit: deny
   bash:

@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Package workflow components
         run: |
@@ -41,7 +43,6 @@ jobs:
       - name: Generate changelog
         id: changelog
         run: |
-          git fetch --tags --unshallow 2>/dev/null || true
           CHANGELOG=$(git-cliff --config cliff.toml --current --strip header 2>/dev/null || echo "")
           if [ -z "$CHANGELOG" ]; then
             CHANGELOG="No notable changes for this release."
@@ -54,6 +55,8 @@ jobs:
 
       - name: Update CHANGELOG.md
         run: |
+          git fetch origin main
+          git checkout main
           git-cliff --config cliff.toml --output CHANGELOG.md
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

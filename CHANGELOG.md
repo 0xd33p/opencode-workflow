@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### Docs
+
+- Update CHANGELOG.md for v1.2.0
+- Add tools section to README and include tools in setup
+
+### Refactor
+
+- **agents:** Remove hardcoded model, inherit from session instead
+
 ### Ci
 
 - Auto-generate changelog from conventional commits on release

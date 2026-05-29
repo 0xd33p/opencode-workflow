@@ -6,10 +6,10 @@ const path = require('path');
 const targetBase = path.join(process.cwd(), '.opencode');
 
 const mapping = {
-  'agents': 'agent',
-  'commands': 'command',
-  'skills': 'skill',
-  'plugins': 'plugin'
+  'agents': 'agents',
+  'commands': 'commands',
+  'skills': 'skills',
+  'plugins': 'plugins'
 };
 
 console.log('🚀 Initializing OpenCode Workflow setup...');

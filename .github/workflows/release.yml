@@ -17,16 +17,16 @@ jobs:
 
       - name: Package workflow components
         run: |
-          mkdir -p .opencode/agent
-          mkdir -p .opencode/command
-          mkdir -p .opencode/skill
-          mkdir -p .opencode/plugin
+          mkdir -p .opencode/agents
+          mkdir -p .opencode/commands
+          mkdir -p .opencode/skills
+          mkdir -p .opencode/plugins
           
-          # Copy contents (ensuring singular folder names for OpenCode CLI)
-          cp -r agents/* .opencode/agent/
-          cp -r commands/* .opencode/command/
-          cp -r skills/* .opencode/skill/
-          cp -r plugins/* .opencode/plugin/
+          # Copy contents (preserving plural folder names)
+          cp -r agents/* .opencode/agents/
+          cp -r commands/* .opencode/commands/
+          cp -r skills/* .opencode/skills/
+          cp -r plugins/* .opencode/plugins/
           
           # Create zip archive
           zip -r opencode-workflow-setup.zip .opencode/

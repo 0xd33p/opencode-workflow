@@ -9,7 +9,8 @@ const mapping = {
   'agents': 'agents',
   'commands': 'commands',
   'skills': 'skills',
-  'plugins': 'plugins'
+  'plugins': 'plugins',
+  'tools': 'tools'
 };
 
 console.log('🚀 Initializing OpenCode Workflow setup...');

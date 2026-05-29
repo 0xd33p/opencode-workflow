@@ -16,6 +16,7 @@
 | **⌨️ Custom Commands**    | **12** | One-tap workflows like `/review`, `/commit`, `/architect`, and more. |
 | **🧠 Domain Skills**      | **7**  | Deep knowledge bases for APIs, Performance, and Architecture.        |
 | **🔌 Smart Plugins**      | **5**  | Automated guardrails: formatting, security scans, and notifications. |
+| **🔧 Custom Tools**       | **6**  | bat, ripgrep, jq, HTTPie, ctags, tree wrappers.                     |
 
 ### ⚡ Parallel Execution Engine
 
@@ -84,6 +85,7 @@ cp -r agents/   your-project/.opencode/agent
 cp -r commands/ your-project/.opencode/command
 cp -r skills/   your-project/.opencode/skill
 cp -r plugins/  your-project/.opencode/plugin
+cp -r tools/    your-project/.opencode/tool
 ```
 
 ### 🗺️ Folder Mapping Reference
@@ -94,6 +96,28 @@ cp -r plugins/  your-project/.opencode/plugin
 | `commands/`   | `.opencode/command/` |
 | `skills/`     | `.opencode/skill/`   |
 | `plugins/`    | `.opencode/plugin/`  |
+| `tools/`      | `.opencode/tool/`    |
+
+---
+
+## 🔧 Tools & Dependencies
+
+OpenCode Workflow includes **6 custom tools** that wrap popular CLI utilities for use directly within OpenCode. These CLI tools must be installed **manually** — they are **not** bundled with the workflow.
+
+| Tool      | Wraps CLI         | Install (Linux)                          | Install (macOS)                      |
+| :-------- | :---------------- | :--------------------------------------- | :----------------------------------- |
+| `bat`     | bat               | `sudo apt install bat`                   | `brew install bat`                   |
+| `rg`      | ripgrep           | `sudo apt install ripgrep`               | `brew install ripgrep`               |
+| `jq`      | jq                | `sudo apt install jq`                    | `brew install jq`                    |
+| `http`    | HTTPie            | `sudo apt install httpie`                | `brew install httpie`                |
+| `ctags`   | universal-ctags   | `sudo apt install universal-ctags`       | `brew install universal-ctags`       |
+| `tree`    | tree              | `sudo apt install tree`                  | `brew install tree`                  |
+
+Make sure to copy the tools to your project after install:
+
+```bash
+cp -r tools/ your-project/.opencode/tool/
+```
 
 ---
 
